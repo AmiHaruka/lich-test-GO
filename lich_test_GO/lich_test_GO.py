@@ -94,17 +94,17 @@ def write_counts_csv(path: Path, rows: List[dict]) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Multi-frame LICH-TEST runner for Amber trajectories")
+    parser = argparse.ArgumentParser(description="Multi-frame LICH-TEST-GO runner")
     parser.add_argument("--top", required=True, help="Topology file (e.g., system.prmtop)")
     parser.add_argument("--traj", required=True, help="Trajectory file (e.g., md.nc; md.dcd)")
-    parser.add_argument("--start", type=int, default=None, help="Start frame (0-based, inclusive)")
-    parser.add_argument("--stop", type=int, default=None, help="Stop frame (exclusive)")
-    parser.add_argument("--step", type=int, default=1, help="Frame stride")
+    parser.add_argument("--start", type=int, default=None, help="Start frame")
+    parser.add_argument("--stop", type=int, default=None, help="Stop frame")
+    parser.add_argument("--step", type=int, default=50, help="Frame stride")
     parser.add_argument(
         "--oxygen-names",
         nargs="+",
         default=["OW", "mW","O"],
-        help="Atom names to treat as water oxygens (space-separated)",
+        help="Atom names to treat as water oxygens",
     )
     parser.add_argument("--min-score", type=float, default=0.5, help="Minimum similarity score")
     parser.add_argument(
